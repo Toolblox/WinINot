@@ -1,0 +1,1157 @@
+typedef BOOL(__stdcall* DEFI_CommitUrlCacheEntryA) (
+    _In_ LPCSTR lpszUrlName,
+    _In_opt_ LPCSTR lpszLocalFileName,
+    _In_ FILETIME ExpireTime,
+    _In_ FILETIME LastModifiedTime,
+    _In_ DWORD CacheEntryType,
+    _In_reads_opt_(cchHeaderInfo) LPBYTE lpHeaderInfo,
+    _In_ DWORD cchHeaderInfo,
+    _Reserved_ LPCSTR lpszFileExtension,
+    _In_opt_ LPCSTR lpszOriginalUrl
+    )
+
+typedef BOOL(__stdcall* DEFI_CommitUrlCacheEntryW) (
+    _In_ LPCWSTR lpszUrlName,
+    _In_opt_ LPCWSTR lpszLocalFileName,
+    _In_ FILETIME ExpireTime,
+    _In_ FILETIME LastModifiedTime,
+    _In_ DWORD CacheEntryType,
+    _In_reads_opt_(cchHeaderInfo) LPWSTR lpszHeaderInfo,
+    _In_ DWORD cchHeaderInfo,
+    _Reserved_ LPCWSTR lpszFileExtension,
+    _In_opt_ LPCWSTR lpszOriginalUrl
+    )
+
+typedef BOOL(__stdcall* DEFI_CreateMD5SSOHash) (
+    _In_ PWSTR    pszChallengeInfo,
+    _In_ PWSTR    pwszRealm,
+    _In_ PWSTR    pwszTarget,
+    _Out_ PBYTE   pbHexHash
+    )
+
+typedef BOOL(__stdcall* DEFI_CreateUrlCacheEntryA) (
+    _In_       LPCSTR lpszUrlName,
+    _In_       DWORD dwExpectedFileSize,
+    _In_opt_ LPCSTR lpszFileExtension,
+    _Inout_updates_(MAX_PATH) LPSTR lpszFileName,
+    _In_       DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_CreateUrlCacheEntryW) (
+    _In_       LPCWSTR lpszUrlName,
+    _In_       DWORD dwExpectedFileSize,
+    _In_opt_ LPCWSTR lpszFileExtension,
+    _Inout_updates_(MAX_PATH) LPWSTR lpszFileName,
+    _In_       DWORD dwReserved
+    )
+
+typedef GROUPID(__stdcall* DEFI_CreateUrlCacheGroup) (
+    _In_   DWORD  dwFlags,
+    _Reserved_ LPVOID lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_DeleteUrlCacheEntryA) (
+    _In_ LPCSTR lpszUrlName
+    )
+
+typedef BOOL(__stdcall* DEFI_DeleteUrlCacheEntryW) (
+    _In_ LPCWSTR lpszUrlName
+    )
+
+typedef BOOL(__stdcall* DEFI_DeleteUrlCacheGroup) (
+    _In_   GROUPID GroupId,
+    _In_   DWORD   dwFlags,       // must pass 0
+    _Reserved_ LPVOID  lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_DetectAutoProxyUrl) (
+    _Out_writes_(cchAutoProxyUrl) PSTR pszAutoProxyUrl,
+    _In_ DWORD cchAutoProxyUrl,
+    _In_ DWORD dwDetectFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_FindCloseUrlCache) (
+    _In_ HANDLE hEnumHandle
+    )
+
+typedef HANDLE(__stdcall* DEFI_FindFirstUrlCacheEntryA) (
+    _In_opt_ LPCSTR lpszUrlSearchPattern,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef HANDLE(__stdcall* DEFI_FindFirstUrlCacheEntryExA) (
+    _In_opt_ LPCSTR  lpszUrlSearchPattern,
+    _In_ DWORD dwFlags,
+    _In_ DWORD  dwFilter,
+    _In_ GROUPID  GroupId,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpFirstCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPVOID lpGroupAttributes,
+    _Reserved_ LPDWORD lpcbGroupAttributes,
+    _Reserved_ LPVOID lpReserved
+    )
+
+typedef HANDLE(__stdcall* DEFI_FindFirstUrlCacheEntryExW) (
+    _In_opt_ LPCWSTR  lpszUrlSearchPattern,
+    _In_ DWORD dwFlags,
+    _In_ DWORD  dwFilter,
+    _In_ GROUPID  GroupId,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPVOID lpGroupAttributes,
+    _Reserved_ LPDWORD lpcbGroupAttributes,
+    _Reserved_ LPVOID lpReserved
+    )
+
+typedef HANDLE(__stdcall* DEFI_FindFirstUrlCacheEntryW) (
+    _In_opt_ LPCWSTR lpszUrlSearchPattern,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpFirstCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef HANDLE(__stdcall* DEFI_FindFirstUrlCacheGroup) (
+    _In_        DWORD       dwFlags,
+    _In_        DWORD       dwFilter,
+    _Reserved_  LPVOID      lpSearchCondition,
+    _Reserved_  DWORD       dwSearchCondition,
+    _Out_       GROUPID* lpGroupId,
+    _Reserved_  LPVOID      lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_FindNextUrlCacheEntryA) (
+    _In_ HANDLE hEnumHandle,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef BOOL(__stdcall* DEFI_FindNextUrlCacheEntryExA) (
+    _In_ HANDLE hEnumHandle,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpNextCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPVOID lpGroupAttributes,
+    _Reserved_ LPDWORD lpcbGroupAttributes,
+    _Reserved_ LPVOID lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_FindNextUrlCacheEntryExW) (
+    _In_ HANDLE hEnumHandle,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPVOID lpGroupAttributes,
+    _Reserved_ LPDWORD lpcbGroupAttributes,
+    _Reserved_ LPVOID lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_FindNextUrlCacheEntryW) (
+    _In_ HANDLE hEnumHandle,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpNextCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef BOOL(__stdcall* DEFI_FindNextUrlCacheGroup) (
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpCommandA) (
+    _In_ HINTERNET hConnect,
+    _In_ BOOL fExpectResponse,
+    _In_ DWORD dwFlags,
+    _In_ LPCSTR lpszCommand,
+    _In_opt_ DWORD_PTR dwContext,
+    _Out_opt_ HINTERNET* phFtpCommand
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpCommandW) (
+    _In_ HINTERNET hConnect,
+    _In_ BOOL fExpectResponse,
+    _In_ DWORD dwFlags,
+    _In_ LPCWSTR lpszCommand,
+    _In_opt_ DWORD_PTR dwContext,
+    _Out_opt_ HINTERNET* phFtpCommand
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpCreateDirectoryA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpCreateDirectoryW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpDeleteFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszFileName
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpDeleteFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszFileName
+    )
+
+typedef HINTERNET(__stdcall* DEFI_FtpFindFirstFileA) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCSTR lpszSearchFile,
+    _Out_opt_ LPWIN32_FIND_DATAA lpFindFileData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_FtpFindFirstFileW) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCWSTR lpszSearchFile,
+    _Out_opt_ LPWIN32_FIND_DATAW lpFindFileData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpGetCurrentDirectoryA) (
+    _In_ HINTERNET hConnect,
+    _Out_writes_(*lpdwCurrentDirectory) LPSTR lpszCurrentDirectory,
+    _Inout_ LPDWORD lpdwCurrentDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpGetCurrentDirectoryW) (
+    _In_ HINTERNET hConnect,
+    _Out_writes_(*lpdwCurrentDirectory) LPWSTR lpszCurrentDirectory,
+    _Inout_ LPDWORD lpdwCurrentDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpGetFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszRemoteFile,
+    _In_ LPCSTR lpszNewFile,
+    _In_ BOOL fFailIfExists,
+    _In_ DWORD dwFlagsAndAttributes,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef DWORD(__stdcall* DEFI_FtpGetFileSize) (
+    _In_ HINTERNET hFile,
+    _Out_opt_ LPDWORD lpdwFileSizeHigh
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpGetFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszRemoteFile,
+    _In_ LPCWSTR lpszNewFile,
+    _In_ BOOL fFailIfExists,
+    _In_ DWORD dwFlagsAndAttributes,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_FtpOpenFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszFileName,
+    _In_ DWORD dwAccess,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_FtpOpenFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszFileName,
+    _In_ DWORD dwAccess,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpPutFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszLocalFile,
+    _In_ LPCSTR lpszNewRemoteFile,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpPutFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszLocalFile,
+    _In_ LPCWSTR lpszNewRemoteFile,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpRemoveDirectoryA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpRemoveDirectoryW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpRenameFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszExisting,
+    _In_ LPCSTR lpszNew
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpRenameFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszExisting,
+    _In_ LPCWSTR lpszNew
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpSetCurrentDirectoryA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_FtpSetCurrentDirectoryW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszDirectory
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheEntryInfoA) (
+    _In_ LPCSTR lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    _Inout_opt_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheEntryInfoExA) (
+    _In_ LPCSTR lpszUrl,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    _Inout_opt_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPSTR lpszRedirectUrl,
+    _Reserved_ LPDWORD lpcbRedirectUrl,
+    _Reserved_ LPVOID lpReserved,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheEntryInfoExW) (
+    _In_ LPCWSTR lpszUrl,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    _Inout_opt_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ LPWSTR lpszRedirectUrl,
+    _Reserved_ LPDWORD lpcbRedirectUrl,
+    _Reserved_ LPVOID lpReserved,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheEntryInfoW) (
+    _In_ LPCWSTR lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    _Inout_opt_ LPDWORD lpcbCacheEntryInfo
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheGroupAttributeA) (
+    _In_                            GROUPID                         gid,
+    _Reserved_                      DWORD                           dwFlags,
+    _In_                            DWORD                           dwAttributes,
+    _Out_writes_bytes_(*lpcbGroupInfo)    LPINTERNET_CACHE_GROUP_INFOA    lpGroupInfo,
+    _Inout_                         LPDWORD                         lpcbGroupInfo,
+    _Reserved_                      LPVOID                          lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheGroupAttributeW) (
+    _In_                            GROUPID                         gid,
+    _Reserved_                      DWORD                           dwFlags,
+    _In_                            DWORD                           dwAttributes,
+    _Out_writes_bytes_(*lpcbGroupInfo)    LPINTERNET_CACHE_GROUP_INFOW    lpGroupInfo,
+    _Inout_                         LPDWORD                         lpcbGroupInfo,
+    _Reserved_                      LPVOID                          lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherCreateLocatorA) (
+    _In_ LPCSTR lpszHost,
+    _In_ INTERNET_PORT nServerPort,
+    _In_opt_ LPCSTR lpszDisplayString,
+    _In_opt_ LPCSTR lpszSelectorString,
+    _In_ DWORD dwGopherType,
+    _Out_writes_opt_(*lpdwBufferLength) LPSTR lpszLocator,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherCreateLocatorW) (
+    _In_ LPCWSTR lpszHost,
+    _In_ INTERNET_PORT nServerPort,
+    _In_opt_ LPCWSTR lpszDisplayString,
+    _In_opt_ LPCWSTR lpszSelectorString,
+    _In_ DWORD dwGopherType,
+    _Out_writes_opt_(*lpdwBufferLength) LPWSTR lpszLocator,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef HINTERNET(__stdcall* DEFI_GopherFindFirstFileA) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCSTR lpszLocator,
+    _In_opt_ LPCSTR lpszSearchString,
+    _Out_opt_ LPGOPHER_FIND_DATAA lpFindData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_GopherFindFirstFileW) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCWSTR lpszLocator,
+    _In_opt_ LPCWSTR lpszSearchString,
+    _Out_opt_ LPGOPHER_FIND_DATAW lpFindData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherGetAttributeA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszLocator,
+    _In_opt_ LPCSTR lpszAttributeName,
+    _At_((LPSTR)lpBuffer, _Out_writes_(dwBufferLength)) LPBYTE lpBuffer,
+    _In_ DWORD dwBufferLength,
+    _Out_ LPDWORD lpdwCharactersReturned,
+    _In_opt_ GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherGetAttributeW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszLocator,
+    _In_opt_ LPCWSTR lpszAttributeName,
+    _At_((LPWSTR)lpBuffer, _Out_writes_(dwBufferLength)) LPBYTE lpBuffer,
+    _In_ DWORD dwBufferLength,
+    _Out_ LPDWORD lpdwCharactersReturned,
+    _In_opt_ GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator,
+    _In_opt_ DWORD_PTR dwContext
+
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherGetLocatorTypeA) (
+    _In_ LPCSTR lpszLocator,
+    _Out_ LPDWORD lpdwGopherType
+    )
+
+typedef BOOL(__stdcall* DEFI_GopherGetLocatorTypeW) (
+    _In_ LPCWSTR lpszLocator,
+    _Out_ LPDWORD lpdwGopherType
+    )
+
+typedef HINTERNET(__stdcall* DEFI_GopherOpenFileA) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCSTR lpszLocator,
+    _In_opt_ LPCSTR lpszView,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_GopherOpenFileW) (
+    _In_ HINTERNET hConnect,
+    _In_ LPCWSTR lpszLocator,
+    _In_opt_ LPCWSTR lpszView,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpAddRequestHeadersA) (
+    _In_ HINTERNET hRequest,
+    _When_(dwHeadersLength == (DWORD)-1, _In_z_)
+    _When_(dwHeadersLength != (DWORD)-1, _In_reads_(dwHeadersLength))
+    LPCSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_ DWORD dwModifiers
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpAddRequestHeadersW) (
+    _In_ HINTERNET hRequest,
+    _When_(dwHeadersLength == (DWORD)-1, _In_z_)
+    _When_(dwHeadersLength != (DWORD)-1, _In_reads_(dwHeadersLength))
+    LPCWSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_ DWORD dwModifiers
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpEndRequestA) (
+    _In_ HINTERNET hRequest,
+    _Out_opt_ LPINTERNET_BUFFERSA lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpEndRequestW) (
+    _In_ HINTERNET hRequest,
+    _Out_opt_ LPINTERNET_BUFFERSW lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_HttpOpenRequestA) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCSTR lpszVerb,
+    _In_opt_ LPCSTR lpszObjectName,
+    _In_opt_ LPCSTR lpszVersion,
+    _In_opt_ LPCSTR lpszReferrer,
+    _In_opt_z_ LPCSTR FAR* lplpszAcceptTypes,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_HttpOpenRequestW) (
+    _In_ HINTERNET hConnect,
+    _In_opt_ LPCWSTR lpszVerb,
+    _In_opt_ LPCWSTR lpszObjectName,
+    _In_opt_ LPCWSTR lpszVersion,
+    _In_opt_ LPCWSTR lpszReferrer,
+    _In_opt_z_ LPCWSTR FAR* lplpszAcceptTypes,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpQueryInfoA) (
+    _In_ HINTERNET hRequest,
+    _In_ DWORD dwInfoLevel,
+    _Inout_updates_bytes_to_opt_(*lpdwBufferLength, *lpdwBufferLength) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _Inout_opt_ LPDWORD lpdwIndex
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpQueryInfoW) (
+    _In_ HINTERNET hRequest,
+    _In_ DWORD dwInfoLevel,
+    _Inout_updates_bytes_to_opt_(*lpdwBufferLength, *lpdwBufferLength) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _Inout_opt_ LPDWORD lpdwIndex
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpSendRequestA) (
+    _In_ HINTERNET hRequest,
+    _In_reads_opt_(dwHeadersLength) LPCSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_reads_bytes_opt_(dwOptionalLength) LPVOID lpOptional,
+    _In_ DWORD dwOptionalLength
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpSendRequestExA) (
+    _In_ HINTERNET hRequest,
+    _In_opt_ LPINTERNET_BUFFERSA lpBuffersIn,
+    _Out_opt_ LPINTERNET_BUFFERSA lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpSendRequestExW) (
+    _In_ HINTERNET hRequest,
+    _In_opt_ LPINTERNET_BUFFERSW lpBuffersIn,
+    _Out_opt_ LPINTERNET_BUFFERSW lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_HttpSendRequestW) (
+    _In_ HINTERNET hRequest,
+    _In_reads_opt_(dwHeadersLength) LPCWSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_reads_bytes_opt_(dwOptionalLength) LPVOID lpOptional,
+    _In_ DWORD dwOptionalLength
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetAttemptConnect) (
+    _In_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetAutodial) (
+    _In_       DWORD  dwFlags,
+    _In_opt_ HWND   hwndParent
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetAutodialHangup) (
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCanonicalizeUrlA) (
+    _In_ LPCSTR lpszUrl,
+    _Out_writes_(*lpdwBufferLength) LPSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCanonicalizeUrlW) (
+    _In_ LPCWSTR lpszUrl,
+    _Out_writes_(*lpdwBufferLength) LPWSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCheckConnectionA) (
+    _In_ LPCSTR lpszUrl,
+    _In_ DWORD dwFlags,
+    _In_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCheckConnectionW) (
+    _In_ LPCWSTR lpszUrl,
+    _In_ DWORD dwFlags,
+    _In_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetClearAllPerSiteCookieDecisions) ()
+
+typedef BOOL(__stdcall* DEFI_InternetCloseHandle) (
+    _In_ HINTERNET hInternet
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCombineUrlA) (
+    _In_ LPCSTR lpszBaseUrl,
+    _In_ LPCSTR lpszRelativeUrl,
+    _Out_writes_(*lpdwBufferLength) LPSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCombineUrlW) (
+    _In_ LPCWSTR lpszBaseUrl,
+    _In_ LPCWSTR lpszRelativeUrl,
+    _Out_writes_(*lpdwBufferLength) LPWSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength,
+    _In_ DWORD dwFlags
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetConfirmZoneCrossingA) (
+    _In_ HWND hWnd,
+    _In_ LPSTR szUrlPrev,
+    _In_ LPSTR szUrlNew,
+    _In_ BOOL bPost
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetConfirmZoneCrossingW) (
+    _In_ HWND hWnd,
+    _In_ LPWSTR szUrlPrev,
+    _In_ LPWSTR szUrlNew,
+    _In_ BOOL bPost
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetConnectA) (
+    _In_ HINTERNET hInternet,
+    _In_ LPCSTR lpszServerName,
+    _In_ INTERNET_PORT nServerPort,
+    _In_opt_ LPCSTR lpszUserName,
+    _In_opt_ LPCSTR lpszPassword,
+    _In_ DWORD dwService,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetConnectW) (
+    _In_ HINTERNET hInternet,
+    _In_ LPCWSTR lpszServerName,
+    _In_ INTERNET_PORT nServerPort,
+    _In_opt_ LPCWSTR lpszUserName,
+    _In_opt_ LPCWSTR lpszPassword,
+    _In_ DWORD dwService,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCrackUrlA) (
+    _In_reads_(dwUrlLength) LPCSTR lpszUrl,
+    _In_ DWORD dwUrlLength,
+    _In_ DWORD dwFlags,
+    _Inout_ LPURL_COMPONENTSA lpUrlComponents
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCrackUrlW) (
+    _In_reads_(dwUrlLength) LPCWSTR lpszUrl,
+    _In_ DWORD dwUrlLength,
+    _In_ DWORD dwFlags,
+    _Inout_ LPURL_COMPONENTSW lpUrlComponents
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCreateUrlA) (
+    _In_ LPURL_COMPONENTSA lpUrlComponents,
+    _In_ DWORD dwFlags,
+    _Out_writes_opt_(*lpdwUrlLength) LPSTR lpszUrl,
+    _Inout_ LPDWORD lpdwUrlLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetCreateUrlW) (
+    _In_ LPURL_COMPONENTSW lpUrlComponents,
+    _In_ DWORD dwFlags,
+    _Out_writes_opt_(*lpdwUrlLength) LPWSTR lpszUrl,
+    _Inout_ LPDWORD lpdwUrlLength
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetDialA) (
+    _In_ HWND     hwndParent,
+    _In_opt_ LPSTR   lpszConnectoid,
+    _In_ DWORD    dwFlags,
+    _Out_ DWORD_PTR* lpdwConnection,
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetDialW) (
+    _In_ HWND     hwndParent,
+    _In_opt_ LPWSTR   lpszConnectoid,
+    _In_ DWORD    dwFlags,
+    _Out_ DWORD_PTR* lpdwConnection,
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetEnumPerSiteCookieDecisionA) (
+    _Out_writes_to_(*pcSiteNameSize, *pcSiteNameSize) LPSTR pszSiteName,
+    _Inout_ unsigned long* pcSiteNameSize,
+    _Out_ unsigned long* pdwDecision,
+    _In_ unsigned long dwIndex
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetEnumPerSiteCookieDecisionW) (
+    _Out_writes_to_(*pcSiteNameSize, *pcSiteNameSize) LPWSTR pszSiteName,
+    _Inout_ unsigned long* pcSiteNameSize,
+    _Out_ unsigned long* pdwDecision,
+    _In_ unsigned long dwIndex
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetErrorDlg) (
+    _In_ HWND hWnd,
+    _Inout_opt_ HINTERNET hRequest,
+    _In_ DWORD dwError,
+    _In_ DWORD dwFlags,
+    _Inout_opt_ LPVOID* lppvData
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetFindNextFileA) (
+    _In_ HINTERNET hFind,
+    _Out_ LPVOID lpvFindData
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetFindNextFileW) (
+    _In_ HINTERNET hFind,
+    _Out_ LPVOID lpvFindData
+    )
+
+typedef VOID(__stdcall* DEFI_InternetFreeCookies) (
+    _Inout_opt_ INTERNET_COOKIE2* pCookies,
+    _In_ DWORD dwCookieCount
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetConnectedState) (
+    _Out_  LPDWORD  lpdwFlags,
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetConnectedStateExA) (
+    _Out_opt_ LPDWORD lpdwFlags,
+    _Out_writes_opt_(cchNameLen) LPSTR lpszConnectionName,
+    _In_ DWORD cchNameLen,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetConnectedStateExW) (
+    _Out_opt_ LPDWORD lpdwFlags,
+    _Out_writes_opt_(cchNameLen) LPWSTR lpszConnectionName,
+    _In_ DWORD cchNameLen,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetCookieA) (
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetGetCookieEx2) (
+    _In_ PCWSTR pcwszUrl,
+    _In_opt_ PCWSTR pcwszCookieName,
+    _In_ DWORD dwFlags,
+    _Outptr_ INTERNET_COOKIE2** ppCookies,
+    _Out_ PDWORD pdwCookieCount
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetCookieExA) (
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetCookieExW) (
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetCookieW) (
+    _In_ LPCWSTR lpszUrl,
+    _In_opt_ LPCWSTR lpszCookieName,
+    _Out_writes_opt_(*lpdwSize) LPWSTR lpszCookieData,
+    _Inout_ LPDWORD lpdwSize
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetLastResponseInfoA) (
+    _Out_ LPDWORD lpdwError,
+    _Out_writes_opt_(*lpdwBufferLength) LPSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetLastResponseInfoW) (
+    _Out_ LPDWORD lpdwError,
+    _Out_writes_opt_(*lpdwBufferLength) LPWSTR lpszBuffer,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetPerSiteCookieDecisionA) (
+    _In_ LPCSTR pchHostName,
+    _Out_ unsigned long* pResult
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGetPerSiteCookieDecisionW) (
+    _In_ LPCWSTR pchHostName,
+    _Out_ unsigned long* pResult
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGoOnlineA) (
+    _In_opt_ LPCSTR lpszURL,
+    _In_ HWND     hwndParent,
+    _In_ DWORD    dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetGoOnlineW) (
+    _In_opt_ LPCWSTR lpszURL,
+    _In_ HWND     hwndParent,
+    _In_ DWORD    dwFlags
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetHangUp) (
+    _In_   DWORD_PTR    dwConnection,
+    _Reserved_ DWORD        dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetInitializeAutoProxyDll) (
+    _In_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetLockRequestFile) (
+    _In_  HINTERNET hInternet,
+    _Out_ HANDLE* lphLockRequestInfo
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetOpenA) (
+    _In_opt_ LPCSTR lpszAgent,
+    _In_ DWORD dwAccessType,
+    _In_opt_ LPCSTR lpszProxy,
+    _In_opt_ LPCSTR lpszProxyBypass,
+    _In_ DWORD dwFlags
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetOpenUrlA) (
+    _In_ HINTERNET hInternet,
+    _In_ LPCSTR lpszUrl,
+    _In_reads_opt_(dwHeadersLength) LPCSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetOpenUrlW) (
+    _In_ HINTERNET hInternet,
+    _In_ LPCWSTR lpszUrl,
+    _In_reads_opt_(dwHeadersLength) LPCWSTR lpszHeaders,
+    _In_ DWORD dwHeadersLength,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef HINTERNET(__stdcall* DEFI_InternetOpenW) (
+    _In_opt_ LPCWSTR lpszAgent,
+    _In_ DWORD dwAccessType,
+    _In_opt_ LPCWSTR lpszProxy,
+    _In_opt_ LPCWSTR lpszProxyBypass,
+    _In_ DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetQueryDataAvailable) (
+    _In_ HINTERNET hFile,
+    _Out_opt_ __out_data_source(NETWORK) LPDWORD lpdwNumberOfBytesAvailable,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetQueryOptionA) (
+    _In_opt_ HINTERNET hInternet,
+    _In_ DWORD dwOption,
+    _Out_writes_bytes_to_opt_(*lpdwBufferLength, *lpdwBufferLength) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetQueryOptionW) (
+    _In_opt_ HINTERNET hInternet,
+    _In_ DWORD dwOption,
+    _Out_writes_bytes_to_opt_(*lpdwBufferLength, *lpdwBufferLength) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _Inout_ LPDWORD lpdwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetReadFile) (
+    _In_ HINTERNET hFile,
+    _Out_writes_bytes_(dwNumberOfBytesToRead) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _In_ DWORD dwNumberOfBytesToRead,
+    _Out_ LPDWORD lpdwNumberOfBytesRead
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetReadFileExA) (
+    _In_ HINTERNET hFile,
+    _Out_ __out_data_source(NETWORK) LPINTERNET_BUFFERSA lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetReadFileExW) (
+    _In_ HINTERNET hFile,
+    _Out_ __out_data_source(NETWORK) LPINTERNET_BUFFERSW lpBuffersOut,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetCookieA) (
+    _In_ LPCSTR lpszUrl,
+    _In_opt_ LPCSTR lpszCookieName,
+    _In_ LPCSTR lpszCookieData
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetSetCookieEx2) (
+    _In_ PCWSTR pcwszUrl,
+    _In_ const INTERNET_COOKIE2* pCookie,
+    _In_opt_ PCWSTR pcwszP3PPolicy,
+    _In_ DWORD dwFlags,
+    _Out_ PDWORD pdwCookieState
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetSetCookieExA) (
+    _In_ LPCSTR lpszUrl,
+    _In_opt_ LPCSTR lpszCookieName,
+    _In_ LPCSTR lpszCookieData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwReserved
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetSetCookieExW) (
+    _In_ LPCWSTR lpszUrl,
+    _In_opt_ LPCWSTR lpszCookieName,
+    _In_ LPCWSTR lpszCookieData,
+    _In_ DWORD dwFlags,
+    _In_opt_ DWORD_PTR dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetCookieW) (
+    _In_ LPCWSTR lpszUrl,
+    _In_opt_ LPCWSTR lpszCookieName,
+    _In_ LPCWSTR lpszCookieData
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetDialStateA) (
+    _In_opt_ LPCSTR lpszConnectoid,
+    _In_ DWORD    dwState,
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetDialStateW) (
+    _In_opt_ LPCWSTR lpszConnectoid,
+    _In_ DWORD    dwState,
+    _Reserved_ DWORD    dwReserved
+    )
+
+typedef DWORD(__stdcall* DEFI_InternetSetFilePointer) (
+    _In_ HINTERNET hFile,
+    _In_ LONG  lDistanceToMove,
+    _Inout_opt_ PLONG lpDistanceToMoveHigh,
+    _In_ DWORD dwMoveMethod,
+    _Reserved_ DWORD_PTR dwContext
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetOptionA) (
+    _In_opt_ HINTERNET hInternet,
+    _In_       DWORD dwOption,
+    _In_opt_ LPVOID lpBuffer,
+    _In_       DWORD dwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetOptionExA) (
+    _In_opt_ HINTERNET hInternet,
+    _In_       DWORD dwOption,
+    _In_opt_ LPVOID lpBuffer,
+    _In_       DWORD dwBufferLength,
+    _In_       DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetOptionExW) (
+    _In_opt_ HINTERNET hInternet,
+    _In_       DWORD dwOption,
+    _In_opt_ LPVOID lpBuffer,
+    _In_       DWORD dwBufferLength,
+    _In_       DWORD dwFlags
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetOptionW) (
+    _In_opt_ HINTERNET hInternet,
+    _In_       DWORD dwOption,
+    _In_opt_ LPVOID lpBuffer,
+    _In_       DWORD dwBufferLength
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetPerSiteCookieDecisionA) (
+    _In_ LPCSTR pchHostName,
+    _In_ DWORD dwDecision
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetSetPerSiteCookieDecisionW) (
+    _In_ LPCWSTR pchHostName,
+    _In_ DWORD dwDecision
+    )
+
+typedef INTERNET_STATUS_CALLBACK(__stdcall* DEFI_InternetSetStatusCallbackA) (
+    _In_ HINTERNET hInternet,
+    _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    )
+
+typedef INTERNET_STATUS_CALLBACK(__stdcall* DEFI_InternetSetStatusCallbackW) (
+    _In_ HINTERNET hInternet,
+    _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetTimeFromSystemTimeA) (
+    _In_ CONST SYSTEMTIME* pst,           // input GMT time
+    _In_ DWORD dwRFC,                     // RFC format
+    _Out_writes_bytes_(cbTime) LPSTR lpszTime,  // output string buffer
+    _In_ DWORD cbTime                     // output buffer size
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetTimeFromSystemTimeW) (
+    _In_ CONST SYSTEMTIME* pst,            // input GMT time
+    _In_ DWORD dwRFC,                      // RFC format
+    _Out_writes_bytes_(cbTime) LPWSTR lpszTime,  // output string buffer
+    _In_ DWORD cbTime                      // output buffer size
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetTimeToSystemTimeA) (
+    _In_ LPCSTR lpszTime,          // NULL terminated string
+    _Out_ SYSTEMTIME* pst,         // output in GMT time
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetTimeToSystemTimeW) (
+    _In_ LPCWSTR lpszTime,         // NULL terminated string
+    _Out_ SYSTEMTIME* pst,         // output in GMT time
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetUnlockRequestFile) (
+    _Inout_ HANDLE hLockRequestInfo
+    )
+
+typedef BOOL(__stdcall* DEFI_InternetWriteFile) (
+    _In_ HINTERNET hFile,
+    _In_reads_bytes_(dwNumberOfBytesToWrite) LPCVOID lpBuffer,
+    _In_ DWORD dwNumberOfBytesToWrite,
+    _Out_ LPDWORD lpdwNumberOfBytesWritten
+    )
+
+typedef DWORD(__stdcall* DEFI_PrivacyGetZonePreferenceW) (
+    _In_ DWORD dwZone,
+    _In_ DWORD dwType,
+    _Out_opt_ LPDWORD pdwTemplate,
+    _Out_writes_opt_(*pdwBufferLength) LPWSTR pszBuffer,
+    _Inout_opt_ LPDWORD pdwBufferLength
+    )
+
+typedef DWORD(__stdcall* DEFI_PrivacySetZonePreferenceW) (
+    _In_ DWORD       dwZone,
+    _In_ DWORD       dwType,
+    _In_ DWORD       dwTemplate,
+    _In_opt_ LPCWSTR     pszPreference
+    )
+
+typedef BOOL(__stdcall* DEFI_ReadUrlCacheEntryStream) (
+    _In_ HANDLE hUrlCacheStream,
+    _In_ DWORD dwLocation,
+    _Out_writes_bytes_(*lpdwLen) __out_data_source(NETWORK) LPVOID lpBuffer,
+    _Inout_ LPDWORD lpdwLen,
+    _Reserved_ DWORD Reserved
+    )
+
+typedef BOOL(__stdcall* DEFI_ResumeSuspendedDownload) (
+    _In_ HINTERNET hRequest,
+    _In_ DWORD dwResultCode
+    )
+
+typedef BOOL(__stdcall* DEFI_RetrieveUrlCacheEntryFileA) (
+    _In_ LPCSTR lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_RetrieveUrlCacheEntryFileW) (
+    _In_ LPCWSTR lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef HANDLE(__stdcall* DEFI_RetrieveUrlCacheEntryStreamA) (
+    _In_ LPCSTR  lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _In_ BOOL fRandomRead,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef HANDLE(__stdcall* DEFI_RetrieveUrlCacheEntryStreamW) (
+    _In_ LPCWSTR  lpszUrlName,
+    _Inout_updates_bytes_opt_(*lpcbCacheEntryInfo) LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    _Inout_ LPDWORD lpcbCacheEntryInfo,
+    _In_ BOOL fRandomRead,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryGroupA) (
+    _In_   LPCSTR   lpszUrlName,
+    _In_   DWORD    dwFlags,
+    _In_   GROUPID  GroupId,
+    _Reserved_ LPBYTE   pbGroupAttributes,
+    _Reserved_ DWORD    cbGroupAttributes,
+    _Reserved_ LPVOID   lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryGroupW) (
+    _In_   LPCWSTR  lpszUrlName,
+    _In_   DWORD    dwFlags,
+    _In_   GROUPID  GroupId,
+    _Reserved_ LPBYTE   pbGroupAttributes,
+    _Reserved_ DWORD    cbGroupAttributes,
+    _Reserved_ LPVOID   lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryInfoA) (
+    _In_ LPCSTR lpszUrlName,
+    _In_ LPINTERNET_CACHE_ENTRY_INFOA lpCacheEntryInfo,
+    _In_ DWORD dwFieldControl
+    )
+
+typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryInfoW) (
+    _In_ LPCWSTR lpszUrlName,
+    _In_ LPINTERNET_CACHE_ENTRY_INFOW lpCacheEntryInfo,
+    _In_ DWORD dwFieldControl
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheGroupAttributeA) (
+    _In_                            GROUPID                         gid,
+    _Reserved_                      DWORD                           dwFlags,
+    _In_                            DWORD                           dwAttributes,
+    _Out_writes_bytes_(*lpcbGroupInfo)    LPINTERNET_CACHE_GROUP_INFOA    lpGroupInfo,
+    _Inout_                         LPDWORD                         lpcbGroupInfo,
+    _Reserved_                      LPVOID                          lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_GetUrlCacheGroupAttributeW) (
+    _In_                            GROUPID                         gid,
+    _Reserved_                      DWORD                           dwFlags,
+    _In_                            DWORD                           dwAttributes,
+    _Out_writes_bytes_(*lpcbGroupInfo)    LPINTERNET_CACHE_GROUP_INFOW    lpGroupInfo,
+    _Inout_                         LPDWORD                         lpcbGroupInfo,
+    _Reserved_                      LPVOID                          lpReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_UnlockUrlCacheEntryFileA) (
+    _In_ LPCSTR lpszUrlName,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_UnlockUrlCacheEntryFileW) (
+    _In_ LPCWSTR lpszUrlName,
+    _Reserved_ DWORD dwReserved
+    )
+
+typedef BOOL(__stdcall* DEFI_UnlockUrlCacheEntryStream) (
+    _In_ HANDLE hUrlCacheStream,
+    _Reserved_ DWORD Reserved
+    )
+
