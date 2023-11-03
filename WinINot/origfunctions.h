@@ -60,6 +60,11 @@ typedef GROUPID(__stdcall* DEFI_CreateUrlCacheGroup) (
     );
 extern DEFI_CreateUrlCacheGroup ORIG_CreateUrlCacheGroup;
 
+typedef BOOL(__stdcall* DEFI_DeleteUrlCacheEntry) (
+    _In_ LPCSTR lpszUrlName
+    );
+extern DEFI_DeleteUrlCacheEntry ORIG_DeleteUrlCacheEntry;
+
 typedef BOOL(__stdcall* DEFI_DeleteUrlCacheEntryA) (
     _In_ LPCSTR lpszUrlName
     );
@@ -697,6 +702,14 @@ typedef BOOL(__stdcall* DEFI_InternetCombineUrlW) (
     );
 extern DEFI_InternetCombineUrlW ORIG_InternetCombineUrlW;
 
+typedef DWORD(__stdcall* DEFI_InternetConfirmZoneCrossing) (
+    _In_ HWND hWnd,
+    _In_ LPSTR szUrlPrev,
+    _In_ LPSTR szUrlNew,
+    _In_ BOOL bPost
+    );
+extern DEFI_InternetConfirmZoneCrossing ORIG_InternetConfirmZoneCrossing;
+
 typedef DWORD(__stdcall* DEFI_InternetConfirmZoneCrossingA) (
     _In_ HWND hWnd,
     _In_ LPSTR szUrlPrev,
@@ -768,6 +781,15 @@ typedef BOOL(__stdcall* DEFI_InternetCreateUrlW) (
     _Inout_ LPDWORD lpdwUrlLength
     );
 extern DEFI_InternetCreateUrlW ORIG_InternetCreateUrlW;
+
+typedef DWORD(__stdcall* DEFI_InternetDial) (
+    _In_ HWND     hwndParent,
+    _In_opt_ LPSTR   lpszConnectoid,
+    _In_ DWORD    dwFlags,
+    _Out_ LPDWORD lpdwConnection,
+    _In_ DWORD    dwReserved
+    );
+extern DEFI_InternetDial ORIG_InternetDial;
 
 typedef DWORD(__stdcall* DEFI_InternetDialA) (
     _In_ HWND     hwndParent,
@@ -922,6 +944,13 @@ typedef BOOL(__stdcall* DEFI_InternetGetPerSiteCookieDecisionW) (
     _Out_ unsigned long* pResult
     );
 extern DEFI_InternetGetPerSiteCookieDecisionW ORIG_InternetGetPerSiteCookieDecisionW;
+
+typedef BOOL(__stdcall* DEFI_InternetGoOnline) (
+    _In_opt_ LPSTR   lpszURL,
+    _In_ HWND     hwndParent,
+    _In_ DWORD    dwFlags
+    );
+extern DEFI_InternetGoOnline ORIG_InternetGoOnline;
 
 typedef BOOL(__stdcall* DEFI_InternetGoOnlineA) (
     _In_opt_ LPCSTR lpszURL,
@@ -1081,6 +1110,13 @@ typedef BOOL(__stdcall* DEFI_InternetSetCookieW) (
     );
 extern DEFI_InternetSetCookieW ORIG_InternetSetCookieW;
 
+typedef BOOL(__stdcall* DEFI_InternetSetDialState) (
+    _In_opt_ LPCSTR lpszConnectoid,
+    _In_ DWORD    dwState,
+    _In_ DWORD    dwReserved
+    );
+extern DEFI_InternetSetDialState ORIG_InternetSetDialState;
+
 typedef BOOL(__stdcall* DEFI_InternetSetDialStateA) (
     _In_opt_ LPCSTR lpszConnectoid,
     _In_ DWORD    dwState,
@@ -1150,6 +1186,12 @@ typedef BOOL(__stdcall* DEFI_InternetSetPerSiteCookieDecisionW) (
     );
 extern DEFI_InternetSetPerSiteCookieDecisionW ORIG_InternetSetPerSiteCookieDecisionW;
 
+typedef INTERNET_STATUS_CALLBACK(__stdcall* DEFI_InternetSetStatusCallback) (
+    _In_ HINTERNET hInternet,
+    _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
+    );
+extern DEFI_InternetSetStatusCallback ORIG_InternetSetStatusCallback;
+
 typedef INTERNET_STATUS_CALLBACK(__stdcall* DEFI_InternetSetStatusCallbackA) (
     _In_ HINTERNET hInternet,
     _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
@@ -1161,6 +1203,14 @@ typedef INTERNET_STATUS_CALLBACK(__stdcall* DEFI_InternetSetStatusCallbackW) (
     _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
     );
 extern DEFI_InternetSetStatusCallbackW ORIG_InternetSetStatusCallbackW;
+
+typedef BOOL(__stdcall* DEFI_InternetTimeFromSystemTime) (
+    _In_ CONST SYSTEMTIME* pst,           // input GMT time
+    _In_ DWORD dwRFC,                     // RFC format
+    _Out_writes_bytes_(cbTime) LPSTR lpszTime,  // output string buffer
+    _In_ DWORD cbTime                     // output buffer size
+    );
+extern DEFI_InternetTimeFromSystemTime ORIG_InternetTimeFromSystemTime;
 
 typedef BOOL(__stdcall* DEFI_InternetTimeFromSystemTimeA) (
     _In_ CONST SYSTEMTIME* pst,           // input GMT time
@@ -1177,6 +1227,13 @@ typedef BOOL(__stdcall* DEFI_InternetTimeFromSystemTimeW) (
     _In_ DWORD cbTime                      // output buffer size
     );
 extern DEFI_InternetTimeFromSystemTimeW ORIG_InternetTimeFromSystemTimeW;
+
+typedef BOOL(__stdcall* DEFI_InternetTimeToSystemTime) (
+    _In_ LPCSTR lpszTime,          // NULL terminated string
+    _Out_ SYSTEMTIME* pst,         // output in GMT time
+    _Reserved_ DWORD dwReserved
+    );
+extern DEFI_InternetTimeToSystemTime ORIG_InternetTimeToSystemTime;
 
 typedef BOOL(__stdcall* DEFI_InternetTimeToSystemTimeA) (
     _In_ LPCSTR lpszTime,          // NULL terminated string
@@ -1271,6 +1328,16 @@ typedef HANDLE(__stdcall* DEFI_RetrieveUrlCacheEntryStreamW) (
     );
 extern DEFI_RetrieveUrlCacheEntryStreamW ORIG_RetrieveUrlCacheEntryStreamW;
 
+typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryGroup) (
+    _In_   LPCSTR   lpszUrlName,
+    _In_   DWORD    dwFlags,
+    _In_   GROUPID  GroupId,
+    _Reserved_ LPBYTE   pbGroupAttributes,
+    _Reserved_ DWORD    cbGroupAttributes,
+    _Reserved_ LPVOID   lpReserved
+    );
+extern DEFI_SetUrlCacheEntryGroup ORIG_SetUrlCacheEntryGroup;
+
 typedef BOOL(__stdcall* DEFI_SetUrlCacheEntryGroupA) (
     _In_   LPCSTR   lpszUrlName,
     _In_   DWORD    dwFlags,
@@ -1322,6 +1389,12 @@ typedef BOOL(__stdcall* DEFI_SetUrlCacheGroupAttributeW) (
     _Reserved_  LPVOID                          lpReserved
     );
 extern DEFI_SetUrlCacheGroupAttributeW ORIG_SetUrlCacheGroupAttributeW;
+
+typedef BOOL(__stdcall* DEFI_UnlockUrlCacheEntryFile) (
+    _In_ LPCSTR lpszUrlName,
+    _Reserved_ DWORD dwReserved
+    );
+extern DEFI_UnlockUrlCacheEntryFile ORIG_UnlockUrlCacheEntryFile;
 
 typedef BOOL(__stdcall* DEFI_UnlockUrlCacheEntryFileA) (
     _In_ LPCSTR lpszUrlName,

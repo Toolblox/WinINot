@@ -5,6 +5,7 @@ EXPORTS
 	CreateUrlCacheEntryA = CreateUrlCacheEntryA
 	CreateUrlCacheEntryW = CreateUrlCacheEntryW
 	CreateUrlCacheGroup = CreateUrlCacheGroup
+	DeleteUrlCacheEntry = DeleteUrlCacheEntry
 	DeleteUrlCacheEntryA = DeleteUrlCacheEntryA
 	DeleteUrlCacheEntryW = DeleteUrlCacheEntryW
 	DeleteUrlCacheGroup = DeleteUrlCacheGroup
@@ -82,6 +83,7 @@ EXPORTS
 	InternetCloseHandle = InternetCloseHandle
 	InternetCombineUrlA = InternetCombineUrlA
 	InternetCombineUrlW = InternetCombineUrlW
+	InternetConfirmZoneCrossing = InternetConfirmZoneCrossing
 	InternetConfirmZoneCrossingA = InternetConfirmZoneCrossingA
 	InternetConfirmZoneCrossingW = InternetConfirmZoneCrossingW
 	InternetConnectA = InternetConnectA
@@ -90,6 +92,7 @@ EXPORTS
 	InternetCrackUrlW = InternetCrackUrlW
 	InternetCreateUrlA = InternetCreateUrlA
 	InternetCreateUrlW = InternetCreateUrlW
+	InternetDial = InternetDial
 	InternetDialA = InternetDialA
 	InternetDialW = InternetDialW
 	InternetEnumPerSiteCookieDecisionA = InternetEnumPerSiteCookieDecisionA
@@ -110,6 +113,7 @@ EXPORTS
 	InternetGetLastResponseInfoW = InternetGetLastResponseInfoW
 	InternetGetPerSiteCookieDecisionA = InternetGetPerSiteCookieDecisionA
 	InternetGetPerSiteCookieDecisionW = InternetGetPerSiteCookieDecisionW
+	InternetGoOnline = InternetGoOnline
 	InternetGoOnlineA = InternetGoOnlineA
 	InternetGoOnlineW = InternetGoOnlineW
 	InternetHangUp = InternetHangUp
@@ -130,6 +134,7 @@ EXPORTS
 	InternetSetCookieExA = InternetSetCookieExA
 	InternetSetCookieExW = InternetSetCookieExW
 	InternetSetCookieW = InternetSetCookieW
+	InternetSetDialState = InternetSetDialState
 	InternetSetDialStateA = InternetSetDialStateA
 	InternetSetDialStateW = InternetSetDialStateW
 	InternetSetFilePointer = InternetSetFilePointer
@@ -139,10 +144,13 @@ EXPORTS
 	InternetSetOptionW = InternetSetOptionW
 	InternetSetPerSiteCookieDecisionA = InternetSetPerSiteCookieDecisionA
 	InternetSetPerSiteCookieDecisionW = InternetSetPerSiteCookieDecisionW
+	InternetSetStatusCallback = InternetSetStatusCallback
 	InternetSetStatusCallbackA = InternetSetStatusCallbackA
 	InternetSetStatusCallbackW = InternetSetStatusCallbackW
+	InternetTimeFromSystemTime = InternetTimeFromSystemTime
 	InternetTimeFromSystemTimeA = InternetTimeFromSystemTimeA
 	InternetTimeFromSystemTimeW = InternetTimeFromSystemTimeW
+	InternetTimeToSystemTime = InternetTimeToSystemTime
 	InternetTimeToSystemTimeA = InternetTimeToSystemTimeA
 	InternetTimeToSystemTimeW = InternetTimeToSystemTimeW
 	InternetUnlockRequestFile = InternetUnlockRequestFile
@@ -155,12 +163,14 @@ EXPORTS
 	RetrieveUrlCacheEntryFileW = RetrieveUrlCacheEntryFileW
 	RetrieveUrlCacheEntryStreamA = RetrieveUrlCacheEntryStreamA
 	RetrieveUrlCacheEntryStreamW = RetrieveUrlCacheEntryStreamW
+	SetUrlCacheEntryGroup = SetUrlCacheEntryGroup
 	SetUrlCacheEntryGroupA = SetUrlCacheEntryGroupA
 	SetUrlCacheEntryGroupW = SetUrlCacheEntryGroupW
 	SetUrlCacheEntryInfoA = SetUrlCacheEntryInfoA
 	SetUrlCacheEntryInfoW = SetUrlCacheEntryInfoW
 	SetUrlCacheGroupAttributeA = SetUrlCacheGroupAttributeA
 	SetUrlCacheGroupAttributeW = SetUrlCacheGroupAttributeW
+	UnlockUrlCacheEntryFile = UnlockUrlCacheEntryFile
 	UnlockUrlCacheEntryFileA = UnlockUrlCacheEntryFileA
 	UnlockUrlCacheEntryFileW = UnlockUrlCacheEntryFileW
 	UnlockUrlCacheEntryStream = UnlockUrlCacheEntryStream

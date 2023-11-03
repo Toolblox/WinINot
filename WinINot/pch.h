@@ -13,3 +13,14 @@
 #define URLCACHEAPI        EXTERN_C DECLSPEC_EXPORT DWORD STDAPICALLTYPE
 #define URLCACHEAPI_(type) EXTERN_C DECLSPEC_EXPORT type STDAPICALLTYPE
 #define BOOLAPI INTERNETAPIX(BOOL, _Success_(return != FALSE))
+
+#undef DeleteUrlCacheEntry
+#undef InternetConfirmZoneCrossing
+#undef InternetDial
+#undef InternetGoOnline
+#undef InternetSetDialState
+#undef InternetSetStatusCallback
+#undef InternetTimeFromSystemTime
+#undef InternetTimeToSystemTime
+#undef SetUrlCacheEntryGroup
+#undef UnlockUrlCacheEntryFile

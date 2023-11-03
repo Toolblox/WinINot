@@ -79,6 +79,13 @@ INTERNETAPI_(GROUPID) CreateUrlCacheGroup(
     return ORIG_CreateUrlCacheGroup(dwFlags, lpReserved);
 }
 
+BOOLAPI DeleteUrlCacheEntry(
+    _In_ LPCSTR lpszUrlName
+)
+{
+    return ORIG_DeleteUrlCacheEntry(lpszUrlName);
+}
+
 BOOLAPI DeleteUrlCacheEntryA(
     _In_ LPCSTR lpszUrlName
 )
@@ -909,6 +916,16 @@ BOOLAPI InternetCombineUrlW(
     return ORIG_InternetCombineUrlW(lpszBaseUrl, lpszRelativeUrl, lpszBuffer, lpdwBufferLength, dwFlags);
 }
 
+INTERNETAPI_(DWORD) InternetConfirmZoneCrossing(
+    _In_ HWND hWnd,
+    _In_ LPSTR szUrlPrev,
+    _In_ LPSTR szUrlNew,
+    _In_ BOOL bPost
+)
+{
+    return ORIG_InternetConfirmZoneCrossing(hWnd, szUrlPrev, szUrlNew, bPost);
+}
+
 INTERNETAPI_(DWORD) InternetConfirmZoneCrossingA(
     _In_ HWND hWnd,
     _In_ LPSTR szUrlPrev,
@@ -1004,6 +1021,17 @@ BOOLAPI InternetCreateUrlW(
 )
 {
     return ORIG_InternetCreateUrlW(lpUrlComponents, dwFlags, lpszUrl, lpdwUrlLength);
+}
+
+INTERNETAPI_(DWORD) InternetDial(
+    _In_ HWND     hwndParent,
+    _In_opt_ LPSTR   lpszConnectoid,
+    _In_ DWORD    dwFlags,
+    _Out_ LPDWORD lpdwConnection,
+    _In_ DWORD    dwReserved
+)
+{
+    return ORIG_InternetDial(hwndParent, lpszConnectoid, dwFlags, lpdwConnection, dwReserved);
 }
 
 INTERNETAPI_(DWORD) InternetDialA(
@@ -1198,6 +1226,15 @@ BOOLAPI InternetGetPerSiteCookieDecisionW(
 )
 {
     return ORIG_InternetGetPerSiteCookieDecisionW(pchHostName, pResult);
+}
+
+BOOLAPI InternetGoOnline(
+    _In_opt_ LPSTR   lpszURL,
+    _In_ HWND     hwndParent,
+    _In_ DWORD    dwFlags
+)
+{
+    return ORIG_InternetGoOnline(lpszURL, hwndParent, dwFlags);
 }
 
 BOOLAPI InternetGoOnlineA(
@@ -1398,6 +1435,15 @@ BOOLAPI InternetSetCookieW(
     return ORIG_InternetSetCookieW(lpszUrl, lpszCookieName, lpszCookieData);
 }
 
+BOOLAPI InternetSetDialState(
+    _In_opt_ LPCSTR lpszConnectoid,
+    _In_ DWORD    dwState,
+    _In_ DWORD    dwReserved
+)
+{
+    return ORIG_InternetSetDialState(lpszConnectoid, dwState, dwReserved);
+}
+
 BOOLAPI InternetSetDialStateA(
     _In_opt_ LPCSTR lpszConnectoid,
     _In_ DWORD    dwState,
@@ -1485,6 +1531,14 @@ BOOLAPI InternetSetPerSiteCookieDecisionW(
     return ORIG_InternetSetPerSiteCookieDecisionW(pchHostName, dwDecision);
 }
 
+INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallback(
+    _In_ HINTERNET hInternet,
+    _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
+)
+{
+    return ORIG_InternetSetStatusCallback(hInternet, lpfnInternetCallback);
+}
+
 INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallbackA(
     _In_ HINTERNET hInternet,
     _In_opt_ INTERNET_STATUS_CALLBACK lpfnInternetCallback
@@ -1499,6 +1553,16 @@ INTERNETAPI_(INTERNET_STATUS_CALLBACK) InternetSetStatusCallbackW(
 )
 {
     return ORIG_InternetSetStatusCallbackW(hInternet, lpfnInternetCallback);
+}
+
+BOOLAPI InternetTimeFromSystemTime(
+    _In_ CONST SYSTEMTIME* pst,           // input GMT time
+    _In_ DWORD dwRFC,                     // RFC format
+    _Out_writes_bytes_(cbTime) LPSTR lpszTime,  // output string buffer
+    _In_ DWORD cbTime                     // output buffer size
+)
+{
+    return ORIG_InternetTimeFromSystemTime(pst, dwRFC, lpszTime, cbTime);
 }
 
 BOOLAPI InternetTimeFromSystemTimeA(
@@ -1519,6 +1583,15 @@ BOOLAPI InternetTimeFromSystemTimeW(
 )
 {
     return ORIG_InternetTimeFromSystemTimeW(pst, dwRFC, lpszTime, cbTime);
+}
+
+BOOLAPI InternetTimeToSystemTime(
+    _In_ LPCSTR lpszTime,          // NULL terminated string
+    _Out_ SYSTEMTIME* pst,         // output in GMT time
+    _Reserved_ DWORD dwReserved
+)
+{
+    return ORIG_InternetTimeToSystemTime(lpszTime, pst, dwReserved);
 }
 
 BOOLAPI InternetTimeToSystemTimeA(
@@ -1638,6 +1711,18 @@ INTERNETAPI_(HANDLE) RetrieveUrlCacheEntryStreamW(
     return ORIG_RetrieveUrlCacheEntryStreamW(lpszUrlName, lpCacheEntryInfo, lpcbCacheEntryInfo, fRandomRead, dwReserved);
 }
 
+BOOLAPI SetUrlCacheEntryGroup(
+    _In_   LPCSTR   lpszUrlName,
+    _In_   DWORD    dwFlags,
+    _In_   GROUPID  GroupId,
+    _Reserved_ LPBYTE   pbGroupAttributes,
+    _Reserved_ DWORD    cbGroupAttributes,
+    _Reserved_ LPVOID   lpReserved
+)
+{
+    return ORIG_SetUrlCacheEntryGroup(lpszUrlName, dwFlags, GroupId, pbGroupAttributes, cbGroupAttributes, lpReserved);
+}
+
 BOOLAPI SetUrlCacheEntryGroupA(
     _In_   LPCSTR   lpszUrlName,
     _In_   DWORD    dwFlags,
@@ -1700,6 +1785,14 @@ BOOLAPI SetUrlCacheGroupAttributeW(
 )
 {
     return ORIG_SetUrlCacheGroupAttributeW(gid, dwFlags, dwAttributes, lpGroupInfo, lpReserved);
+}
+
+BOOLAPI UnlockUrlCacheEntryFile(
+    _In_ LPCSTR lpszUrlName,
+    _Reserved_ DWORD dwReserved
+)
+{
+    return ORIG_UnlockUrlCacheEntryFile(lpszUrlName, dwReserved);
 }
 
 BOOLAPI UnlockUrlCacheEntryFileA(
